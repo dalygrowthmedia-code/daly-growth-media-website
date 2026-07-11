@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ContactForm } from "./components/ContactForm";
+import { LogoBoomIntro } from "./components/LogoBoomIntro";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
 
@@ -52,6 +53,7 @@ const stats = [
 export default function Home() {
   return (
     <main id="top">
+      <LogoBoomIntro />
       <SiteHeader />
       <HomeHero />
       <HomeResults />

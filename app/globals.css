@@ -138,6 +138,111 @@ img {
   gap: 1rem;
 }
 
+.logo-boom {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.logo-boom-bubble {
+  position: absolute;
+  width: 14rem;
+  height: 14rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 30%,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(255, 255, 255, 0.4) 16%,
+    rgba(143, 205, 245, 0.32) 40%,
+    rgba(58, 155, 224, 0.2) 68%,
+    rgba(58, 155, 224, 0.05) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 10px 40px rgba(58, 155, 224, 0.25),
+    inset 0 0 30px rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(4px) saturate(150%);
+  -webkit-backdrop-filter: blur(4px) saturate(150%);
+  transform: scale(0.05);
+  opacity: 0;
+  animation: logo-boom-expand 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.logo-boom-mark {
+  position: relative;
+  width: 7rem;
+  height: 7rem;
+  background-color: rgba(255, 255, 255, 0.94);
+  background-image: url("/assets/logo.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 72% auto;
+  border-radius: 20px;
+  box-shadow: 0 16px 38px rgba(15, 40, 58, 0.24);
+  opacity: 0;
+  transform: scale(0.6);
+  animation: logo-boom-mark-fade 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (max-width: 640px) {
+  .logo-boom-bubble {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .logo-boom-mark {
+    width: 5.25rem;
+    height: 5.25rem;
+  }
+}
+
+@keyframes logo-boom-expand {
+  0% {
+    transform: scale(0.05);
+    opacity: 0;
+    filter: blur(0);
+  }
+  10% {
+    opacity: 0.9;
+  }
+  60% {
+    opacity: 0.68;
+  }
+  86% {
+    filter: blur(0);
+  }
+  100% {
+    transform: scale(6.4);
+    opacity: 0;
+    filter: blur(4px);
+  }
+}
+
+@keyframes logo-boom-mark-fade {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+    filter: blur(0);
+  }
+  16% {
+    opacity: 1;
+  }
+  68% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.88);
+    filter: blur(6px);
+  }
+}
+
 .hero-logo-secondary {
   min-height: 15rem;
   background-image: url("/assets/clare-fm.webp");
