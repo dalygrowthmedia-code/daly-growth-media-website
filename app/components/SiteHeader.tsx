@@ -14,7 +14,12 @@ export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="site-header sticky top-0 z-50 border-b bg-white/92 backdrop-blur">
+    <>
+      <a className="promo-banner" href="/#contact">
+        <strong>Exclusive offer</strong> — my next 3 clients get their first
+        campaign free. <span className="promo-banner-cta">Book a call now →</span>
+      </a>
+      <header className="site-header sticky top-0 z-50 border-b bg-white/92 backdrop-blur">
       <nav
         aria-label="Primary navigation"
         className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-4 sm:px-6 lg:px-8"
@@ -77,6 +82,7 @@ export function SiteHeader() {
           </a>
         </div>
       </nav>
-    </header>
+      </header>
+    </>
   );
 }

@@ -5,7 +5,14 @@ import { SiteHeader } from "../components/SiteHeader";
 export const metadata: Metadata = {
   title: { absolute: "About Sean Daly | Daly Growth Media" },
   description:
-    "16-year-old Meta ads specialist from Co. Clare. Running businesses since age 10."
+    "16-year-old Meta ads specialist from Co. Clare. Running businesses since age 10.",
+  alternates: { canonical: "/story" },
+  openGraph: {
+    title: "About Sean Daly | Daly Growth Media",
+    description:
+      "16-year-old Meta ads specialist from Co. Clare. Running businesses since age 10.",
+    url: "/story"
+  }
 };
 
 export default function StoryPage() {
@@ -14,7 +21,7 @@ export default function StoryPage() {
       <SiteHeader />
       <section id="story" className="section-band">
         <div className="section-shell">
-          <div className="story-page-grid grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div className="story-page-grid grid grid-cols-1 gap-10">
             <div className="reveal" aria-label="Photo of Sean Daly">
               <figure className="story-page-photo">
                 <div
@@ -27,10 +34,10 @@ export default function StoryPage() {
             </div>
 
             <div className="reveal">
-              <h2 className="section-title">
+              <h1 className="section-title">
                 I&apos;m Sean Daly, from Ennis, Co. Clare. I&apos;ve been
                 running businesses since I was 10.
-              </h2>
+              </h1>
               <div className="story-placeholder mt-8">
                 <p>
                   I started my first business at 10 &mdash; selling eggs door to

@@ -1,12 +1,20 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { AnimatedNumber } from "../components/AnimatedNumber";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 
 export const metadata: Metadata = {
   title: { absolute: "Results & Achievements | Daly Growth Media" },
   description:
-    "Proof points from Sean Daly's marketing journey — awards, campaigns and real ad data."
+    "Proof points from Sean Daly's marketing journey — awards, campaigns and real ad data.",
+  alternates: { canonical: "/results" },
+  openGraph: {
+    title: "Results & Achievements | Daly Growth Media",
+    description:
+      "Proof points from Sean Daly's marketing journey — awards, campaigns and real ad data.",
+    url: "/results"
+  }
 };
 
 const achievements = [
@@ -33,19 +41,32 @@ const achievements = [
   }
 ];
 
-const stats = [
+interface StatItem {
+  value: number;
+  label: string;
+  prefix?: string;
+  suffix?: string;
+  decimals?: number;
+}
+
+const stats: StatItem[] = [
   {
-    value: "20+",
+    value: 20,
+    suffix: "+",
     label: "Businesses worked with across JSU Marketing"
   },
   {
-    value: "3.39%",
-    label: "CTR on first Meta ads test (industry average: 1–2%)"
-  },
-  {
-    value: "9 months",
+    value: 9,
+    suffix: " months",
     label: "Running marketing businesses since age 15"
   }
+];
+
+const caseStudyStats: StatItem[] = [
+  { value: 230.64, prefix: "€", decimals: 2, label: "Total ad spend" },
+  { value: 25, label: "Purchases" },
+  { value: 4.69, decimals: 2, label: "ROAS" },
+  { value: 9.23, prefix: "€", decimals: 2, label: "Cost per purchase" }
 ];
 
 export default function ResultsPage() {
@@ -55,9 +76,9 @@ export default function ResultsPage() {
       <section id="results" className="section-shell">
         <div className="reveal max-w-3xl">
           <p className="eyebrow">Achievements / results</p>
-          <h2 className="section-title">
+          <h1 className="section-title">
             Proof points from the journey so far.
-          </h2>
+          </h1>
         </div>
         <div className="mt-12 grid gap-4 md:grid-cols-3">
           {achievements.map((achievement) => (
@@ -83,14 +104,14 @@ export default function ResultsPage() {
           ))}
         </div>
 
-        <div className="mt-12 grid gap-6 border-y border-brand-line py-8 md:grid-cols-3 md:gap-0">
+        <div className="mt-12 grid gap-6 border-y border-brand-line py-8 sm:grid-cols-2 sm:gap-0">
           {stats.map((stat) => (
             <div
-              className="px-0 md:border-r md:border-brand-line md:px-8 md:last:border-r-0"
-              key={stat.value}
+              className="px-0 sm:border-r sm:border-brand-line sm:px-8 sm:last:border-r-0"
+              key={stat.label}
             >
               <p className="text-4xl font-semibold leading-tight text-brand-ink">
-                {stat.value}
+                <AnimatedNumber value={stat.value} suffix={stat.suffix} />
               </p>
               <p className="mt-2 text-sm leading-6 text-slate-600">
                 {stat.label}
@@ -98,6 +119,35 @@ export default function ResultsPage() {
             </div>
           ))}
         </div>
+
+        <article className="stat-card reveal mt-12">
+          <div className="achievement-copy">
+            <p className="eyebrow">Case study</p>
+            <p className="mt-2 text-2xl font-semibold text-brand-ink">
+              GA Sports — All Ireland Final Sale Campaign
+            </p>
+            <p className="mt-4 leading-7 text-slate-700">
+              A two-week Meta ads campaign timed around the All Ireland Final,
+              turning €230.64 in ad spend into €1,081.31 of purchases across
+              92,967 impressions — settling at a 4.69–4.80 ROAS once the full
+              two weeks of data confirmed.
+            </p>
+            <div className="mt-6 grid grid-cols-2 gap-6 lg:grid-cols-4">
+              {caseStudyStats.map((stat) => (
+                <div key={stat.label}>
+                  <p className="text-2xl font-semibold text-brand-ink">
+                    <AnimatedNumber
+                      value={stat.value}
+                      prefix={stat.prefix}
+                      decimals={stat.decimals}
+                    />
+                  </p>
+                  <p className="mt-1 text-sm text-slate-600">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>
       </section>
       <SiteFooter />
     </main>

@@ -354,8 +354,8 @@ export function Contact() {
             <div className="mt-9 space-y-5 text-base text-slate-700">
               <p>
                 <span className="contact-label">Email</span>
-                <a className="contact-link" href="mailto:dalygrowthmedia@gmail.com">
-                  dalygrowthmedia@gmail.com
+                <a className="contact-link" href="mailto:sean@dalygrowthmedia.com">
+                  sean@dalygrowthmedia.com
                 </a>
               </p>
               <p>

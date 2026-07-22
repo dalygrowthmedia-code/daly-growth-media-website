@@ -5,7 +5,14 @@ import { SiteHeader } from "../components/SiteHeader";
 export const metadata: Metadata = {
   title: { absolute: "Why Work With Me | Daly Growth Media" },
   description:
-    "Creative-led Meta ads with full tracking. One person, full accountability, no agency handoff."
+    "Creative-led Meta ads with full tracking. One person, full accountability, no agency handoff.",
+  alternates: { canonical: "/why-me" },
+  openGraph: {
+    title: "Why Work With Me | Daly Growth Media",
+    description:
+      "Creative-led Meta ads with full tracking. One person, full accountability, no agency handoff.",
+    url: "/why-me"
+  }
 };
 
 const points = [
@@ -34,9 +41,9 @@ export default function WhyMePage() {
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div className="reveal">
             <p className="eyebrow">Why work with me</p>
-            <h2 className="section-title">
+            <h1 className="section-title">
               Creative that stops the scroll. Tracking that proves the return.
-            </h2>
+            </h1>
           </div>
           <div className="reveal trust-list">
             {points.map((point) => (

@@ -1,12 +1,20 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { AnimatedNumber } from "../components/AnimatedNumber";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 
 export const metadata: Metadata = {
   title: { absolute: "Meta Ads Services | Daly Growth Media" },
   description:
-    "One focused Meta ads offer for Irish e-commerce — strategy, creative, tracking and reporting at €300/month."
+    "Start with a free Meta ads campaign plan, then one focused offer for Irish e-commerce — strategy, creative, tracking and reporting, starting from €300/month.",
+  alternates: { canonical: "/services" },
+  openGraph: {
+    title: "Meta Ads Services | Daly Growth Media",
+    description:
+      "Start with a free Meta ads campaign plan, then one focused offer for Irish e-commerce — strategy, creative, tracking and reporting, starting from €300/month.",
+    url: "/services"
+  }
 };
 
 const services = [
@@ -36,6 +44,13 @@ const services = [
   }
 ];
 
+const freePlanItems = [
+  "Full audit of your store and current ads",
+  "Recommended campaign and audience strategy",
+  "Realistic budget and ROAS targets",
+  "Delivered on a 20-minute call — no obligation"
+];
+
 const pricingItems = [
   "One Meta ads campaign managed monthly",
   "One new ad creative produced each month",
@@ -62,9 +77,9 @@ function ServicesPageServices() {
         <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
           <div className="reveal">
             <p className="eyebrow">Services</p>
-            <h2 className="section-title">
+            <h1 className="section-title">
               Paid social support without pretending to do everything.
-            </h2>
+            </h1>
             <p className="mt-6 text-lg leading-8 text-slate-700">
               The work stays centred on Meta ads: strategy, build-out, creative
               learning, optimisation and reporting.
@@ -96,15 +111,16 @@ function ServicesPageServices() {
 function ServicesPagePricing() {
   return (
     <section id="pricing" className="section-shell">
-      <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+      <div className="grid gap-10 lg:grid-cols-[0.62fr_1.38fr] lg:items-start">
         <div className="reveal">
           <p className="eyebrow">Pricing</p>
-          <h2 className="section-title">One Simple Plan</h2>
+          <h2 className="section-title">Start with a free plan.</h2>
           <p className="mt-6 text-lg leading-8 text-slate-700">
-            No confusing packages. One focused offer.
+            No confusing packages. Get a free campaign plan first, then one
+            focused offer to run it.
           </p>
           <Image
-            className="mt-8 block h-[clamp(18rem,34vw,28rem)] w-full rounded-lg border border-brand-line object-cover object-[center_18%] shadow-soft"
+            className="mt-8 block aspect-[2/3] w-full rounded-lg border border-brand-line object-cover object-top shadow-soft"
             src="/assets/second-headshot.webp"
             alt="Sean Daly"
             width={900}
@@ -114,26 +130,46 @@ function ServicesPagePricing() {
           />
         </div>
 
-        <article className="service-card reveal">
-          <p className="eyebrow">THE OFFER</p>
-          <p className="mt-4 text-5xl font-semibold leading-none text-brand-ink">
-            €300/month
-          </p>
-          <ul className="mt-8 grid gap-4 leading-7 text-slate-700">
-            {pricingItems.map((item) => (
-              <li key={item} className="border-b border-brand-line pb-4">
-                {item}
-              </li>
-            ))}
-          </ul>
-          <p className="mt-7 text-sm leading-6 text-slate-600">
-            You control your own ad spend separately, paid directly to Meta.
-            Most clients start with €10-15 per day.
-          </p>
-          <a className="button mt-8" href="/#contact">
-            Get Started — It&apos;s Free To Talk
-          </a>
-        </article>
+        <div className="grid gap-6 sm:grid-cols-2">
+          <article className="service-card reveal">
+            <p className="eyebrow">Step 1</p>
+            <p className="mt-4 text-3xl font-semibold leading-tight text-brand-ink">
+              Free Campaign Plan
+            </p>
+            <ul className="mt-8 grid gap-4 leading-7 text-slate-700">
+              {freePlanItems.map((item) => (
+                <li key={item} className="border-b border-brand-line pb-4">
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <a className="button button-secondary mt-8" href="/#contact">
+              Get My Free Plan
+            </a>
+          </article>
+
+          <article className="service-card reveal">
+            <p className="eyebrow">Step 2</p>
+            <p className="mt-4 text-3xl font-semibold leading-tight text-brand-ink">
+              Starting from <AnimatedNumber value={300} prefix="€" />
+              /month
+            </p>
+            <ul className="mt-8 grid gap-4 leading-7 text-slate-700">
+              {pricingItems.map((item) => (
+                <li key={item} className="border-b border-brand-line pb-4">
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-7 text-sm leading-6 text-slate-600">
+              You control your own ad spend separately, paid directly to Meta.
+              Most clients start with €10-15 per day.
+            </p>
+            <a className="button mt-8" href="/#contact">
+              Get Started
+            </a>
+          </article>
+        </div>
       </div>
     </section>
   );

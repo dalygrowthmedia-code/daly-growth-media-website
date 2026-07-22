@@ -2,7 +2,8 @@
 
 import { FormEvent, useState } from "react";
 
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/xkoalbzo";
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+const WEB3FORMS_ACCESS_KEY = "e0f3d7b4-e87f-442c-ae63-156d6623088e";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">(
@@ -17,7 +18,7 @@ export function ContactForm() {
     const formData = new FormData(form);
 
     try {
-      const response = await fetch(FORMSPREE_ENDPOINT, {
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
         method: "POST",
         body: formData,
         headers: {
@@ -25,7 +26,9 @@ export function ContactForm() {
         }
       });
 
-      if (!response.ok) {
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
         throw new Error("Form submission failed");
       }
 
@@ -48,6 +51,12 @@ export function ContactForm() {
 
   return (
     <form className="contact-form reveal" onSubmit={handleSubmit}>
+      <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+      <input
+        type="hidden"
+        name="subject"
+        value="New enquiry from dalygrowthmedia.com"
+      />
       <div className="grid gap-5 sm:grid-cols-2">
         <label>
           Name
@@ -69,7 +78,7 @@ export function ContactForm() {
       {status === "error" ? (
         <p className="rounded-md border border-brand-line bg-brand-mist px-4 py-3 text-sm font-semibold text-brand-ink">
           Something went wrong. Please try again or email{" "}
-          dalygrowthmedia@gmail.com.
+          sean@dalygrowthmedia.com.
         </p>
       ) : null}
       <button className="button" type="submit" disabled={status === "submitting"}>
