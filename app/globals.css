@@ -25,7 +25,7 @@ body {
   margin: 0;
   background: #ffffff;
   color: var(--brand-ink);
-  font-family: Inter, Geist, "Avenir Next", ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-body), Inter, ui-sans-serif, system-ui, sans-serif;
   font-size: 18px;
   line-height: 1.7;
   text-rendering: optimizeLegibility;
@@ -47,7 +47,7 @@ img {
   color: #ffffff;
   text-align: center;
   font-size: 0.9rem;
-  font-weight: 650;
+  font-weight: 500;
   line-height: 1.5;
   padding: 0.7rem 1rem;
   text-decoration: none;
@@ -59,7 +59,7 @@ img {
 }
 
 .promo-banner-cta {
-  font-weight: 750;
+  font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -110,8 +110,9 @@ img {
   max-width: 46rem;
   color: var(--brand-ink);
   font-size: clamp(2rem, 5vw, 4.25rem);
-  font-weight: 650;
-  line-height: 1.04;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
 }
 
 .brand-lockup {
@@ -120,7 +121,7 @@ img {
   align-items: center;
   gap: 0.75rem;
   color: var(--brand-ink);
-  font-weight: 750;
+  font-weight: 700;
   text-decoration: none;
 }
 
@@ -280,7 +281,7 @@ img {
   border-radius: 6px;
   color: #445766;
   font-size: 0.94rem;
-  font-weight: 650;
+  font-weight: 500;
   padding: 0.65rem 0.85rem;
   text-decoration: none;
   transition:
@@ -302,7 +303,7 @@ img {
   border-radius: 6px;
   background: var(--brand-blue);
   color: #ffffff;
-  font-weight: 750;
+  font-weight: 700;
   line-height: 1;
   padding: 0.75rem 1.75rem;
   text-align: center;
@@ -422,21 +423,34 @@ img {
 .hero-heading {
   margin-top: 1.25rem;
   max-width: 64rem;
-  color: var(--brand-ink);
+  font-family: var(--font-display), Poppins, ui-sans-serif, system-ui, sans-serif;
   font-size: clamp(2.35rem, 12vw, 4.5rem);
-  font-weight: 650;
-  letter-spacing: 0;
-  line-height: 1.02;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
 }
 
 .hero-heading span {
   display: block;
 }
 
-.hero-heading-soft {
-  margin-top: 0.25rem;
-  font-size: 0.84em;
-  font-weight: 500;
+.hero-heading-outline {
+  color: var(--brand-blue);
+}
+
+.hero-heading-fill {
+  margin-top: 0.15em;
+  color: var(--brand-blue);
+}
+
+@supports (-webkit-text-stroke: 1px black) or (text-stroke: 1px black) {
+  .hero-heading-outline {
+    color: transparent;
+    -webkit-text-stroke-width: clamp(1px, 0.16vw, 1.75px);
+    -webkit-text-stroke-color: var(--brand-blue);
+    text-stroke-width: clamp(1px, 0.16vw, 1.75px);
+    text-stroke-color: var(--brand-blue);
+  }
 }
 
 .panel-offset {
@@ -517,7 +531,7 @@ figcaption {
 .story-placeholder p:first-child {
   color: var(--brand-ink);
   font-size: 1.2rem;
-  font-weight: 750;
+  font-weight: 700;
 }
 
 .stat-card,
@@ -651,7 +665,7 @@ figcaption {
   margin-top: 1rem;
   color: #ffffff;
   font-size: clamp(1.15rem, 2.4vw, 1.5rem);
-  font-weight: 550;
+  font-weight: 500;
   line-height: 1.6;
 }
 
@@ -752,7 +766,7 @@ figcaption {
 .trust-list h3 {
   color: var(--brand-ink);
   font-size: 1.2rem;
-  font-weight: 750;
+  font-weight: 700;
 }
 
 .trust-list p {
@@ -781,6 +795,10 @@ figcaption {
   color: var(--brand-ink) !important;
 }
 
+.font-semibold {
+  font-weight: 700 !important;
+}
+
 .leading-6,
 .leading-7,
 .leading-8 {
@@ -791,7 +809,7 @@ figcaption {
   display: block;
   color: var(--brand-ink);
   font-size: 0.78rem;
-  font-weight: 750;
+  font-weight: 700;
   letter-spacing: 0.14em;
   margin-bottom: 0.35rem;
   text-transform: uppercase;
@@ -799,7 +817,7 @@ figcaption {
 
 .contact-link {
   color: var(--brand-blue);
-  font-weight: 750;
+  font-weight: 700;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
 }
@@ -831,7 +849,7 @@ figcaption {
   gap: 0.55rem;
   color: var(--brand-ink);
   font-size: 0.92rem;
-  font-weight: 750;
+  font-weight: 700;
 }
 
 .contact-form input,

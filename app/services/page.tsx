@@ -57,7 +57,7 @@ const freePlanItems = [
 
 const pricingItems = [
   "One Meta lead-gen campaign managed monthly",
-  "One new ad creative produced each month",
+  "Multiple ad creatives tested each month — video and static, refined based on what's converting",
   "Monthly performance report — spend vs leads booked",
   "Quarterly content shoot every three months",
   "Full lead tracking setup on your business"

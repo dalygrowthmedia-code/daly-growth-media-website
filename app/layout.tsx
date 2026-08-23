@@ -1,8 +1,23 @@
 import type { Metadata } from "next";
+import { Inter, Poppins } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
 const GA_MEASUREMENT_ID = "G-5M69WF95PV";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-body",
+  display: "swap"
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["800"],
+  variable: "--font-display",
+  display: "swap"
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://dalygrowthmedia.com"),
@@ -80,7 +95,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-IE">
+    <html lang="en-IE" className={`${inter.variable} ${poppins.variable}`}>
       <body>
         {children}
         <Script

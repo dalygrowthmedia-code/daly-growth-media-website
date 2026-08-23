@@ -85,8 +85,10 @@ function HomeHero() {
             &amp; Galway
           </p>
           <h1 className="hero-heading">
-            <span>We Turn Ad Spend Into</span>
-            <span className="hero-heading-soft">Booked Jobs — Not Just Clicks</span>
+            <span className="hero-heading-outline">
+              We Turn Ad Spend Into Booked Jobs —{" "}
+            </span>
+            <span className="hero-heading-fill">See Exactly How Many</span>
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-700 sm:text-xl">
             Built for trades, home improvement and premium service
