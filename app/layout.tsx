@@ -7,15 +7,16 @@ const GA_MEASUREMENT_ID = "G-5M69WF95PV";
 export const metadata: Metadata = {
   metadataBase: new URL("https://dalygrowthmedia.com"),
   title: {
-    default: "Daly Growth Media | Meta Ads for Irish E-commerce Brands",
+    default:
+      "Daly Growth Media | Meta Ads Lead Generation for Trades — Clare, Limerick & Galway",
     template: "%s | Daly Growth Media"
   },
   description:
-    "Daly Growth Media helps Irish e-commerce brands run, optimise and scale Meta ads across Facebook and Instagram.",
+    "Meta ads lead generation for trades, home improvement and service businesses across Clare, Limerick, Galway and Munster, Ireland. We turn ad spend into booked jobs, not just clicks.",
   openGraph: {
     title: "Daly Growth Media",
     description:
-      "Meta ads that actually sell for Irish e-commerce brands.",
+      "We turn ad spend into booked jobs — Meta ads lead generation for trades and service businesses across Clare, Limerick, Galway and Munster.",
     url: "https://dalygrowthmedia.com",
     siteName: "Daly Growth Media",
     images: [
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Daly Growth Media",
     description:
-      "Meta ads that actually sell for Irish e-commerce brands.",
+      "We turn ad spend into booked jobs — Meta ads lead generation for trades and service businesses across Clare, Limerick, Galway and Munster.",
     images: ["/assets/social-cover.png"]
   }
 };
@@ -43,17 +44,20 @@ const structuredData = {
   "@type": "ProfessionalService",
   name: "Daly Growth Media",
   description:
-    "Daly Growth Media helps Irish e-commerce brands run, optimise and scale Meta ads across Facebook and Instagram.",
+    "Daly Growth Media runs Meta ad campaigns that turn ad spend into booked jobs for trades, home improvement and premium service businesses across Clare, Limerick, Galway and Munster, Ireland.",
   url: "https://dalygrowthmedia.com",
   email: "sean@dalygrowthmedia.com",
   image: "https://dalygrowthmedia.com/assets/logo.png",
   logo: "https://dalygrowthmedia.com/assets/logo.png",
   telephone: "+353873792059",
   priceRange: "€€",
-  areaServed: {
-    "@type": "Country",
-    name: "Ireland"
-  },
+  areaServed: [
+    { "@type": "AdministrativeArea", name: "County Clare" },
+    { "@type": "AdministrativeArea", name: "County Limerick" },
+    { "@type": "AdministrativeArea", name: "County Galway" },
+    { "@type": "AdministrativeArea", name: "Munster" },
+    { "@type": "Country", name: "Ireland" }
+  ],
   address: {
     "@type": "PostalAddress",
     addressRegion: "Co. Clare",
@@ -65,7 +69,8 @@ const structuredData = {
   },
   sameAs: [
     "https://www.instagram.com/dalygrowthmedia/",
-    "https://www.facebook.com/profile.php?id=61591304975543"
+    "https://www.facebook.com/profile.php?id=61591304975543",
+    "https://www.linkedin.com/in/sean-daly-a02362378/"
   ]
 };
 

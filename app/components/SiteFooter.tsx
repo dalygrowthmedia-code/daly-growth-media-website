@@ -7,7 +7,8 @@ export function SiteFooter() {
           <span className="brand-wordmark">Daly Growth Media</span>
         </a>
         <p className="text-sm text-slate-600">
-          Meta ads for Irish e-commerce brands. Built from Ireland.
+          Meta ads lead generation for trades &amp; service businesses. Built
+          from Ireland.
         </p>
         <div className="flex items-center gap-5">
           <a
@@ -62,6 +63,25 @@ function SocialLinks() {
           aria-hidden="true"
         >
           <path d="M13.5 21v-8.2h2.75l.41-3.2h-3.16V7.6c0-.93.26-1.56 1.6-1.56h1.7V3.14C15.98 3.06 15.03 3 13.9 3c-2.35 0-3.96 1.44-3.96 4.07v2.53H7.18v3.2h2.76V21h3.56z" />
+        </svg>
+      </a>
+      <a
+        className="social-link"
+        href="https://www.linkedin.com/in/sean-daly-a02362378/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Sean Daly on LinkedIn"
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path d="M6.94 8.5H3.56V20.5H6.94V8.5Z" />
+          <path d="M5.25 3.5C4.14 3.5 3.25 4.4 3.25 5.5C3.25 6.6 4.14 7.5 5.25 7.5C6.36 7.5 7.25 6.6 7.25 5.5C7.25 4.4 6.36 3.5 5.25 3.5Z" />
+          <path d="M9.5 8.5H12.72V10.02H12.77C13.22 9.17 14.32 8.27 15.96 8.27C19.36 8.27 20 10.5 20 13.4V20.5H16.63V14.08C16.63 12.58 16.6 10.66 14.55 10.66C12.46 10.66 12.14 12.28 12.14 13.97V20.5H8.77V8.5H9.5Z" />
         </svg>
       </a>
     </div>

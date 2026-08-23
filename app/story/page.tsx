@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { Reveal } from "../components/Reveal";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 
 export const metadata: Metadata = {
   title: { absolute: "About Sean Daly | Daly Growth Media" },
   description:
-    "16-year-old Meta ads specialist from Co. Clare. Running businesses since age 10.",
+    "17-year-old Meta ads specialist from Co. Clare. Running businesses since age 10.",
   alternates: { canonical: "/story" },
   openGraph: {
     title: "About Sean Daly | Daly Growth Media",
     description:
-      "16-year-old Meta ads specialist from Co. Clare. Running businesses since age 10.",
+      "17-year-old Meta ads specialist from Co. Clare. Running businesses since age 10.",
     url: "/story"
   }
 };
@@ -22,7 +23,7 @@ export default function StoryPage() {
       <section id="story" className="section-band">
         <div className="section-shell">
           <div className="story-page-grid grid grid-cols-1 gap-10">
-            <div className="reveal" aria-label="Photo of Sean Daly">
+            <Reveal as="div" aria-label="Photo of Sean Daly">
               <figure className="story-page-photo">
                 <div
                   className="photo-slot photo-two story-page-photo-image"
@@ -31,9 +32,9 @@ export default function StoryPage() {
                 />
                 <figcaption>In studio at Clare FM</figcaption>
               </figure>
-            </div>
+            </Reveal>
 
-            <div className="reveal">
+            <Reveal as="div" delay={100}>
               <h1 className="section-title">
                 I&apos;m Sean Daly, from Ennis, Co. Clare. I&apos;ve been
                 running businesses since I was 10.
@@ -64,11 +65,12 @@ export default function StoryPage() {
                 </p>
                 <p>
                   I&apos;m now focused entirely on one thing: running trackable
-                  Meta ads for Irish e-commerce stores. One offer, one focus,
-                  results you can actually see.
+                  Meta ad campaigns that turn ad spend into booked jobs for
+                  trades, home improvement and premium service businesses. One
+                  offer, one focus, results you can actually see.
                 </p>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>

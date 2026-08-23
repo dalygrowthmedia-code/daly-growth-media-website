@@ -16,8 +16,7 @@ export function SiteHeader() {
   return (
     <>
       <a className="promo-banner" href="/#contact">
-        <strong>Exclusive offer</strong> — my next 3 clients get their first
-        campaign free. <span className="promo-banner-cta">Book a call now →</span>
+        <span className="promo-banner-cta">Book a free 30-minute strategy call today →</span>
       </a>
       <header className="site-header sticky top-0 z-50 border-b bg-white/92 backdrop-blur">
       <nav

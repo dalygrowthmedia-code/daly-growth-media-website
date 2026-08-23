@@ -632,6 +632,110 @@ figcaption {
   height: 1.55rem;
 }
 
+.testimonial-card {
+  position: relative;
+  border: 1px solid var(--brand-line);
+  border-radius: 10px;
+  background: var(--brand-deep-blue);
+  padding: clamp(1.75rem, 4vw, 3rem);
+  box-shadow: 0 24px 60px rgba(18, 63, 102, 0.25);
+}
+
+.testimonial-quote-mark {
+  width: 2.25rem;
+  height: 1.75rem;
+  color: rgba(143, 205, 245, 0.45);
+}
+
+.testimonial-quote {
+  margin-top: 1rem;
+  color: #ffffff;
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  font-weight: 550;
+  line-height: 1.6;
+}
+
+.testimonial-attribution {
+  margin-top: 1.5rem;
+  color: var(--brand-sky);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.testimonial-disclaimer {
+  margin-top: 0.6rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.78rem;
+}
+
+.process-video,
+.process-video-poster {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.process-video {
+  border: 1px solid var(--brand-line);
+  box-shadow: 0 18px 50px rgba(26, 43, 58, 0.08);
+  object-fit: cover;
+}
+
+.process-video-poster {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--brand-line);
+  box-shadow: 0 18px 50px rgba(26, 43, 58, 0.08);
+  background: var(--brand-mist);
+  padding: 0;
+  cursor: pointer;
+}
+
+.process-video-poster-image {
+  object-fit: cover;
+  transition: transform 300ms ease;
+}
+
+.process-video-poster:hover .process-video-poster-image {
+  transform: scale(1.03);
+}
+
+.process-video-play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: inline-grid;
+  width: 4rem;
+  height: 4rem;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(18, 63, 102, 0.82);
+  color: #ffffff;
+  transform: translate(-50%, -50%);
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.process-video-poster:hover .process-video-play-icon {
+  background: var(--brand-blue);
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.process-video-duration {
+  position: absolute;
+  right: 0.85rem;
+  bottom: 0.85rem;
+  border-radius: 4px;
+  background: rgba(18, 63, 102, 0.82);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 0.25rem 0.55rem;
+}
+
 .trust-list {
   display: grid;
   gap: 0;
@@ -731,6 +835,7 @@ figcaption {
 }
 
 .contact-form input,
+.contact-form select,
 .contact-form textarea {
   width: 100%;
   border: 1px solid #cbddea;
@@ -742,11 +847,21 @@ figcaption {
   padding: 0.88rem 0.95rem;
 }
 
+.contact-form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a2b3a' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
 .contact-form textarea {
   resize: vertical;
 }
 
 .contact-form input:focus,
+.contact-form select:focus,
 .contact-form textarea:focus {
   border-color: var(--brand-blue);
   outline: none;
@@ -757,18 +872,31 @@ figcaption {
   opacity: 1;
 }
 
+.reveal-fade {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 600ms ease,
+    transform 600ms ease;
+}
+
+.reveal-fade-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-fade {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .why-me-point-fade {
     animation: why-me-point-fade 520ms ease forwards;
     opacity: 0;
-  }
-
-  @supports (animation-timeline: view()) {
-    .reveal {
-      animation: fade-up both;
-      animation-range: entry 8% cover 30%;
-      animation-timeline: view();
-    }
   }
 }
 
@@ -776,18 +904,6 @@ figcaption {
   from {
     opacity: 0;
     transform: translateY(6px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
   }
 
   to {
