@@ -3,7 +3,7 @@
 import { FormEvent, useState } from "react";
 
 const GHL_WEBHOOK_ENDPOINT =
-  "https://services.leadconnectorhq.com/hooks/8NNBu4pnBuBFYhFyfENT/webhook-trigger/1cb7e166-2530-4bf9-96a8-63a6c45e5abb";
+  "https://services.leadconnectorhq.com/hooks/8NNBu4pnBuBFYhFyfENT/webhook-trigger/5b300197-b13d-4046-b9ec-9c77ab495767";
 
 export function QualifyingForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">(
