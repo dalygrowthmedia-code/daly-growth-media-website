@@ -176,30 +176,29 @@ function HowItWorks() {
         <Reveal as="div" className="max-w-3xl">
           <p className="eyebrow">How It Works</p>
           <h2 className="section-title">
-            This 59 seconds could change the direction of your business.
+            This <span className="highlight-pop">59 seconds</span> could
+            change the direction of your business.
           </h2>
         </Reveal>
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <Reveal as="div">
-            <ProcessVideo
-              src="/assets/video/how-it-works.mp4"
-              poster="/assets/video/how-it-works-poster.jpg"
-              durationLabel="0:59"
-            />
-          </Reveal>
+        <Reveal as="div" className="mx-auto mt-12 max-w-3xl">
+          <ProcessVideo
+            src="/assets/video/how-it-works.mp4"
+            poster="/assets/video/how-it-works-poster.jpg"
+            durationLabel="0:59"
+          />
+        </Reveal>
 
-          <div className="grid gap-6 sm:grid-cols-2">
-            {processSteps.map((step, index) => (
-              <Reveal as="article" delay={index * 80} className="service-card" key={step.title}>
-                <ServiceIcon path={step.icon} />
-                <h3 className="mt-6 text-xl font-semibold text-brand-ink">
-                  {step.title}
-                </h3>
-                <p className="mt-4 leading-7 text-slate-700">{step.detail}</p>
-              </Reveal>
-            ))}
-          </div>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {processSteps.map((step, index) => (
+            <Reveal as="article" delay={index * 80} className="service-card" key={step.title}>
+              <ServiceIcon path={step.icon} />
+              <h3 className="mt-6 text-xl font-semibold text-brand-ink">
+                {step.title}
+              </h3>
+              <p className="mt-4 leading-7 text-slate-700">{step.detail}</p>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
