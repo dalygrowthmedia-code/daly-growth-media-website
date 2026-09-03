@@ -176,7 +176,7 @@ function HowItWorks() {
         <Reveal as="div" className="max-w-3xl">
           <p className="eyebrow">How It Works</p>
           <h2 className="section-title">
-            From first call to booked jobs — here&apos;s exactly how it works.
+            This 59 seconds could change the direction of your business.
           </h2>
         </Reveal>
 
@@ -185,7 +185,7 @@ function HowItWorks() {
             <ProcessVideo
               src="/assets/video/how-it-works.mp4"
               poster="/assets/video/how-it-works-poster.jpg"
-              durationLabel="1:04"
+              durationLabel="0:59"
             />
           </Reveal>
 
