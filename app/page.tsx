@@ -13,15 +13,15 @@ import { ogImages } from "./seo";
 export const metadata: Metadata = {
   title: {
     absolute:
-      "Meta Ads Lead Generation for Trades Across Ireland | Daly Growth Media"
+      "Meta Ads Lead Generation for Trades in Ireland | Daly Growth Media"
   },
   description:
-    "We turn ad spend into booked jobs — Meta ad campaigns built for trades, home improvement and premium service businesses across Ireland. Plus Google Ads, SEO and websites.",
+    "Meta ads that turn ad spend into booked jobs for trades and service businesses across Ireland. Plus Google Ads, SEO and websites. Start with a free plan.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Meta Ads Lead Generation for Trades Across Ireland | Daly Growth Media",
+    title: "Meta Ads Lead Generation for Trades in Ireland | Daly Growth Media",
     description:
-      "We turn ad spend into booked jobs — Meta ad campaigns built for trades, home improvement and premium service businesses across Ireland. Plus Google Ads, SEO and websites.",
+      "Meta ads that turn ad spend into booked jobs for trades and service businesses across Ireland. Plus Google Ads, SEO and websites. Start with a free plan.",
     url: "/",
     images: ogImages
   }

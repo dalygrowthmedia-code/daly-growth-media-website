@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Reveal } from "../components/Reveal";
 import { ServiceIcon } from "../components/ServiceIcon";
+import { Breadcrumbs } from "../components/Breadcrumbs";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 import { ogImages } from "../seo";
 
 const title =
-  "Meta Ads, Google Ads, SEO & Websites for Trades Across Ireland | Daly Growth Media";
+  "Meta Ads, Google Ads, SEO & Websites in Ireland | Daly Growth Media";
 const description =
-  "Meta ads lead generation for trades and service businesses, plus Google Ads, SEO and Google Business Profile optimisation, and websites and landing pages — across Ireland.";
+  "Meta ads, Google Ads, SEO, Google Business Profile optimisation and websites for trades and service businesses across Ireland. Start with a free plan.";
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -132,6 +133,21 @@ const faqs = [
       "Not for Meta lead-form campaigns — enquiries can come straight from the ad. A fast landing page or website usually improves results, which is why I also build websites and landing pages."
   },
   {
+    question: "How much do Meta ads cost for a trades business in Ireland?",
+    answer:
+      "You set the ad budget and pay it directly to Meta, so it depends on your goals and area. For example, a tar & chip driveway campaign ran on a €30 daily budget and produced 102 leads at €7.91 each in its first month. On your free planning call I recommend a realistic starting budget and cost-per-lead target for your business."
+  },
+  {
+    question: "Do you offer a free consultation?",
+    answer:
+      "Yes. You start with a free 20-minute campaign plan call — no obligation — covering an audit of your current lead generation, a recommended strategy and a realistic budget."
+  },
+  {
+    question: "Can you help with my Google Business Profile and Google reviews?",
+    answer:
+      "Yes. Google Business Profile (GMB) optimisation is part of the SEO service: setting up and optimising your profile, a simple process for collecting more genuine customer reviews, and tracking the calls and direction requests it generates."
+  },
+  {
     question: "Who will I be working with?",
     answer:
       "Directly with me. There are no account managers or junior staff — the person you speak to is the person running your campaigns."
@@ -152,6 +168,7 @@ export default function ServicesPage() {
   return (
     <main id="top">
       <SiteHeader />
+      <Breadcrumbs name="Services" path="/services" />
       <ServicesPageServices />
       <ServicesPageMore />
       <ServicesPagePricing />

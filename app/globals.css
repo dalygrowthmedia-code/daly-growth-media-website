@@ -260,7 +260,7 @@ img {
 .logo-boom-mark {
   width: min(13rem, 46vw);
   aspect-ratio: 1109 / 1437;
-  background-image: url("/assets/logo.png");
+  background-image: url("/assets/logo.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;

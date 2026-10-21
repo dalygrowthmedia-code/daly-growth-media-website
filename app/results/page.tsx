@@ -3,6 +3,7 @@ import Image from "next/image";
 import { AnimatedNumber } from "../components/AnimatedNumber";
 import { CaseStudySlider } from "../components/CaseStudies";
 import { Reveal } from "../components/Reveal";
+import { Breadcrumbs } from "../components/Breadcrumbs";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 import { ogImages } from "../seo";
@@ -10,12 +11,12 @@ import { ogImages } from "../seo";
 export const metadata: Metadata = {
   title: { absolute: "Lead Generation Results Across Ireland | Daly Growth Media" },
   description:
-    "Real Meta ads results for trades and service businesses — including €55,000 in job value from 102 leads in one month — plus Sean Daly's awards and journey. Serving businesses across Ireland.",
+    "Real Meta ads results for Irish trades: 102 leads and €55,000 in job value in one month. See case studies, Google reviews and Sean Daly's achievements.",
   alternates: { canonical: "/results" },
   openGraph: {
     title: "Lead Generation Results Across Ireland | Daly Growth Media",
     description:
-      "Real Meta ads results for trades and service businesses — including €55,000 in job value from 102 leads in one month — plus Sean Daly's awards and journey. Serving businesses across Ireland.",
+      "Real Meta ads results for Irish trades: 102 leads and €55,000 in job value in one month. See case studies, Google reviews and Sean Daly's achievements.",
     url: "/results",
     images: ogImages
   }
@@ -70,6 +71,7 @@ export default function ResultsPage() {
   return (
     <main id="top">
       <SiteHeader />
+      <Breadcrumbs name="Results" path="/results" />
       <section id="results" className="section-shell">
         <Reveal as="div" className="max-w-3xl">
           <p className="eyebrow">Achievements / results</p>

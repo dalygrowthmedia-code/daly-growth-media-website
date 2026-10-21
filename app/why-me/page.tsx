@@ -1,19 +1,20 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Reveal } from "../components/Reveal";
+import { Breadcrumbs } from "../components/Breadcrumbs";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 import { ogImages } from "../seo";
 
 export const metadata: Metadata = {
-  title: { absolute: "Why Work With Me | Daly Growth Media" },
+  title: { absolute: "Why Work With Me — Meta Ads for Trades | Daly Growth Media" },
   description:
-    "Creative-led Meta ads lead generation with full tracking for trades and service businesses across Ireland. One person, full accountability, no agency handoff.",
+    "Creative-led Meta ads with full tracking for trades and service businesses across Ireland. One person, full accountability, no agency handoff.",
   alternates: { canonical: "/why-me" },
   openGraph: {
-    title: "Why Work With Me | Daly Growth Media",
+    title: "Why Work With Me — Meta Ads for Trades | Daly Growth Media",
     description:
-      "Creative-led Meta ads lead generation with full tracking for trades and service businesses across Ireland. One person, full accountability, no agency handoff.",
+      "Creative-led Meta ads with full tracking for trades and service businesses across Ireland. One person, full accountability, no agency handoff.",
     url: "/why-me",
     images: ogImages
   }
@@ -41,6 +42,7 @@ export default function WhyMePage() {
   return (
     <main id="top">
       <SiteHeader />
+      <Breadcrumbs name="Why work with me" path="/why-me" />
       <section id="why" className="section-shell">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <Reveal as="div">
@@ -48,6 +50,12 @@ export default function WhyMePage() {
             <h1 className="section-title">
               Creative that stops the scroll. Tracking that proves the return.
             </h1>
+            <p className="mt-6 max-w-xl text-lg leading-8 text-slate-700">
+              Daly Growth Media is run by Sean Daly in Ennis, Co. Clare. I work
+              with trades, home improvement and service businesses across
+              Ireland on Meta ads, Google Ads, SEO and websites — and every
+              campaign is tracked back to booked jobs.
+            </p>
             <figure className="why-me-photo">
               <Image
                 src="/assets/sean-daly-innovation-clare.webp"
