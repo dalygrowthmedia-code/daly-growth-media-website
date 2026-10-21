@@ -9,11 +9,13 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          sky: "#8FCDF5",
-          blue: "#3A9BE0",
-          ink: "#1A2B3A",
-          mist: "#F4FAFE",
-          line: "#D9EAF6"
+          sky: "#62C6FF",
+          blue: "#4DB8FF",
+          navy: "#040E20",
+          panel: "#0A1F40",
+          ink: "#EAF4FF",
+          mist: "#061633",
+          line: "#173A68"
         }
       },
       fontFamily: {
@@ -27,7 +29,7 @@ const config: Config = {
         ]
       },
       boxShadow: {
-        soft: "0 18px 50px rgba(26, 43, 58, 0.08)"
+        soft: "0 18px 50px rgba(0, 0, 0, 0.45)"
       }
     }
   },

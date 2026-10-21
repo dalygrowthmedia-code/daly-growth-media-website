@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { playSound } from "./sound";
 
 const GHL_WEBHOOK_ENDPOINT =
   "https://services.leadconnectorhq.com/hooks/8NNBu4pnBuBFYhFyfENT/webhook-trigger/5b300197-b13d-4046-b9ec-9c77ab495767";
@@ -41,9 +42,11 @@ export function QualifyingForm() {
       }
 
       setStatus("success");
+      playSound("success");
       form.reset();
     } catch {
       setStatus("error");
+      playSound("error");
     }
   }
 

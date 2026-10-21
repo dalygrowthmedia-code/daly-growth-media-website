@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Reveal } from "../components/Reveal";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
+import { ogImages } from "../seo";
 
 export const metadata: Metadata = {
   title: { absolute: "Why Work With Me | Daly Growth Media" },
   description:
-    "Creative-led Meta ads lead generation with full tracking for trades and service businesses across Clare, Limerick, Galway and Munster. One person, full accountability, no agency handoff.",
+    "Creative-led Meta ads lead generation with full tracking for trades and service businesses across Ireland. One person, full accountability, no agency handoff.",
   alternates: { canonical: "/why-me" },
   openGraph: {
     title: "Why Work With Me | Daly Growth Media",
     description:
-      "Creative-led Meta ads lead generation with full tracking for trades and service businesses across Clare, Limerick, Galway and Munster. One person, full accountability, no agency handoff.",
-    url: "/why-me"
+      "Creative-led Meta ads lead generation with full tracking for trades and service businesses across Ireland. One person, full accountability, no agency handoff.",
+    url: "/why-me",
+    images: ogImages
   }
 };
 
@@ -45,6 +48,16 @@ export default function WhyMePage() {
             <h1 className="section-title">
               Creative that stops the scroll. Tracking that proves the return.
             </h1>
+            <figure className="why-me-photo">
+              <Image
+                src="/assets/sean-daly-innovation-clare.webp"
+                alt="Sean Daly, founder of Daly Growth Media, speaking at Innovation Clare in Co. Clare"
+                width={1200}
+                height={1600}
+                sizes="(min-width: 1024px) 28rem, 90vw"
+              />
+              <figcaption>Speaking at Innovation Clare</figcaption>
+            </figure>
           </Reveal>
           <Reveal as="div" delay={100} className="trust-list">
             {points.map((point) => (

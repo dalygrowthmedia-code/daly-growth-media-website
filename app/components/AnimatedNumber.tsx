@@ -24,16 +24,21 @@ export function AnimatedNumber({
     const node = ref.current;
     if (!node) return;
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      typeof IntersectionObserver === "undefined"
+    ) {
       setDisplay(value);
       return;
     }
 
-    let frame: number;
+    let frame = 0;
+    let reported = false;
     let hasAnimated = false;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
+        reported = true;
         if (!entry.isIntersecting || hasAnimated) return;
         hasAnimated = true;
 
@@ -55,7 +60,18 @@ export function AnimatedNumber({
     );
 
     observer.observe(node);
+
+    // If the observer never reports (hidden or paused previews), show the
+    // real number instead of leaving it at 0.
+    const failsafe = window.setTimeout(() => {
+      if (!reported) {
+        setDisplay(value);
+        observer.disconnect();
+      }
+    }, 1500);
+
     return () => {
+      window.clearTimeout(failsafe);
       observer.disconnect();
       cancelAnimationFrame(frame);
     };

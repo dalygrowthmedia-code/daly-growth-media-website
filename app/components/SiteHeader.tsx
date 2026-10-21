@@ -18,7 +18,7 @@ export function SiteHeader() {
       <a className="promo-banner" href="/#contact">
         <span className="promo-banner-cta">Book a free 30-minute strategy call today →</span>
       </a>
-      <header className="site-header sticky top-0 z-50 border-b bg-white/92 backdrop-blur">
+      <header className="site-header sticky top-0 z-50 border-b bg-brand-navy/85 backdrop-blur-md">
       <nav
         aria-label="Primary navigation"
         className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-4 sm:px-6 lg:px-8"

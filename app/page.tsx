@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { AnimatedNumber } from "./components/AnimatedNumber";
+import { CaseStudySlider } from "./components/CaseStudies";
+import { GoogleMapSection, GoogleReviews } from "./components/GoogleReviews";
 import { LogoBoomIntro } from "./components/LogoBoomIntro";
 import { ProcessVideo } from "./components/ProcessVideo";
 import { QualifyingForm } from "./components/QualifyingForm";
@@ -7,36 +8,24 @@ import { Reveal } from "./components/Reveal";
 import { ServiceIcon } from "./components/ServiceIcon";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
+import { ogImages } from "./seo";
 
 export const metadata: Metadata = {
   title: {
     absolute:
-      "Meta Ads Lead Generation for Trades in Clare, Limerick & Galway | Daly Growth Media"
+      "Meta Ads Lead Generation for Trades Across Ireland | Daly Growth Media"
   },
   description:
-    "We turn ad spend into booked jobs — Meta ad campaigns built for trades, home improvement and premium service businesses across Clare, Limerick, Galway and Munster.",
+    "We turn ad spend into booked jobs — Meta ad campaigns built for trades, home improvement and premium service businesses across Ireland. Plus Google Ads, SEO and websites.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Meta Ads Lead Generation for Trades in Clare, Limerick & Galway | Daly Growth Media",
+    title: "Meta Ads Lead Generation for Trades Across Ireland | Daly Growth Media",
     description:
-      "We turn ad spend into booked jobs — Meta ad campaigns built for trades, home improvement and premium service businesses across Clare, Limerick, Galway and Munster.",
-    url: "/"
+      "We turn ad spend into booked jobs — Meta ad campaigns built for trades, home improvement and premium service businesses across Ireland. Plus Google Ads, SEO and websites.",
+    url: "/",
+    images: ogImages
   }
 };
-
-interface StatItem {
-  value: number;
-  label: string;
-  prefix?: string;
-  suffix?: string;
-  decimals?: number;
-}
-
-const caseStudyStats: StatItem[] = [
-  { value: 71, label: "Total Leads" },
-  { value: 757.79, prefix: "€", decimals: 2, label: "Total Spend" },
-  { value: 50000, prefix: "€", suffix: "+", label: "Generated" }
-];
 
 const processSteps = [
   {
@@ -69,7 +58,9 @@ export default function Home() {
       <HomeHero />
       <CaseStudy />
       <HowItWorks />
+      <GoogleReviews />
       <HomeContact />
+      <GoogleMapSection />
       <SiteFooter />
     </main>
   );
@@ -81,8 +72,7 @@ function HomeHero() {
       <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]">
         <Reveal as="div" className="hero-copy max-w-3xl">
           <p className="eyebrow">
-            Meta Ads for Trades &amp; Service Businesses in Clare, Limerick
-            &amp; Galway
+            Meta Ads for Trades &amp; Service Businesses Across Ireland
           </p>
           <h1 className="hero-heading">
             <span className="hero-heading-outline">
@@ -116,55 +106,7 @@ function HomeHero() {
 function CaseStudy() {
   return (
     <section id="case-study" className="section-shell">
-      <Reveal as="div" className="max-w-3xl">
-        <p className="eyebrow">Case Study</p>
-        <h2 className="section-title">
-          71 Leads. €757.79 Spend. Real Jobs Booked.
-        </h2>
-        <p className="mt-4 text-lg leading-8 text-slate-700">
-          Home Improvement &amp; Roofing Services client
-        </p>
-      </Reveal>
-
-      <div className="mt-12 grid gap-6 border-y border-brand-line py-8 sm:grid-cols-3 sm:gap-0">
-        {caseStudyStats.map((stat, index) => (
-          <Reveal
-            as="div"
-            delay={index * 80}
-            className="px-0 sm:border-r sm:border-brand-line sm:px-8 sm:last:border-r-0"
-            key={stat.label}
-          >
-            <p className="text-4xl font-semibold leading-tight text-brand-ink sm:text-5xl">
-              <AnimatedNumber
-                value={stat.value}
-                prefix={stat.prefix}
-                decimals={stat.decimals}
-              />
-            </p>
-            <p className="mt-2 text-sm leading-6 text-slate-600">{stat.label}</p>
-          </Reveal>
-        ))}
-      </div>
-
-      <Reveal as="article" delay={160} className="testimonial-card mt-12">
-        <svg className="testimonial-quote-mark" viewBox="0 0 32 24" aria-hidden="true">
-          <path
-            fill="currentColor"
-            d="M9.6 24c-2.7 0-4.8-.9-6.4-2.7C1.6 19.4.8 17 .8 14c0-3.2.9-6.1 2.7-8.7C5.3 2.7 7.9.9 11.2 0l1.6 3.2c-2.1.8-3.7 1.9-4.8 3.4-1.1 1.4-1.7 3-1.8 4.8.6-.3 1.3-.5 2.1-.5 1.8 0 3.3.6 4.5 1.8 1.2 1.2 1.8 2.7 1.8 4.5 0 1.9-.6 3.4-1.9 4.7-1.2 1.3-2.8 2.1-4.7 2.1zm18 0c-2.7 0-4.8-.9-6.4-2.7-1.6-1.9-2.4-4.3-2.4-7.3 0-3.2.9-6.1 2.7-8.7C23.3 2.7 25.9.9 29.2 0l1.6 3.2c-2.1.8-3.7 1.9-4.8 3.4-1.1 1.4-1.7 3-1.8 4.8.6-.3 1.3-.5 2.1-.5 1.8 0 3.3.6 4.5 1.8 1.2 1.2 1.8 2.7 1.8 4.5 0 1.9-.6 3.4-1.9 4.7-1.2 1.3-2.8 2.1-4.7 2.1z"
-          />
-        </svg>
-        <p className="testimonial-quote">
-          Since working with Daly Growth Media, the leads coming through their
-          Meta ad campaigns have turned into real, completed jobs for us —
-          over €50,000 worth of work generated directly from the ads. The
-          process was simple, communication was clear throughout, and unlike
-          other marketing we&apos;ve tried, we could actually see where the
-          results were coming from.
-        </p>
-        <p className="testimonial-attribution">
-          &mdash; Home Improvement &amp; Roofing Services Client
-        </p>
-      </Reveal>
+      <CaseStudySlider />
     </section>
   );
 }
@@ -225,8 +167,14 @@ function HomeContact() {
                 </a>
               </p>
               <p>
+                <span className="contact-label">Phone</span>
+                <a className="contact-link" href="tel:+353873792059">
+                  087 379 2059
+                </a>
+              </p>
+              <p>
                 <span className="contact-label">Location</span>
-                Co. Clare, Ireland
+                67 O&apos;Connell Street, Clonrad Beg, Ennis, Co. Clare, V95 KT26
               </p>
             </div>
             <a

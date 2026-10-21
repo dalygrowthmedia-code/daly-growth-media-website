@@ -2,17 +2,19 @@ import type { Metadata } from "next";
 import { Reveal } from "../components/Reveal";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
+import { ogImages } from "../seo";
 
 export const metadata: Metadata = {
   title: { absolute: "About Sean Daly | Daly Growth Media" },
   description:
-    "17-year-old Meta ads specialist from Co. Clare. Running businesses since age 10.",
+    "Meet Sean Daly — 17-year-old Meta ads specialist from Ennis, Co. Clare. Running businesses since age 10, with over 30 SMEs worked with across Ireland.",
   alternates: { canonical: "/story" },
   openGraph: {
     title: "About Sean Daly | Daly Growth Media",
     description:
-      "17-year-old Meta ads specialist from Co. Clare. Running businesses since age 10.",
-    url: "/story"
+      "Meet Sean Daly — 17-year-old Meta ads specialist from Ennis, Co. Clare. Running businesses since age 10, with over 30 SMEs worked with across Ireland.",
+    url: "/story",
+    images: ogImages
   }
 };
 
@@ -45,9 +47,9 @@ export default function StoryPage() {
                   door in Clare. That&apos;s where it started.
                 </p>
                 <p>
-                  At 15 I co-founded JSU Marketing, where over nine months we
-                  worked with over 20 businesses across Clare and beyond on
-                  websites, social media, and content. JSU won the County Clare
+                  At 15 I co-founded JSU Marketing. Over a year on, I&apos;ve
+                  worked with over 30 SMEs across Ireland on websites, social
+                  media, content and paid ads. JSU won the County Clare
                   Student Enterprise Competition and took the Sales and
                   Marketing Award at the National Student Enterprise Programme,
                   competing against businesses from all over Ireland. The
