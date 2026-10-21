@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { haptic, playSound } from "./sound";
 import { AnimatedNumber } from "./AnimatedNumber";
 import { Reveal } from "./Reveal";
 
@@ -56,6 +57,17 @@ const caseStudies: CaseStudy[] = [
 export function CaseStudySlider() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
+  const hasMounted = useRef(false);
+
+  // A soft tick (and buzz on phones) each time a swipe lands on a new slide.
+  useEffect(() => {
+    if (!hasMounted.current) {
+      hasMounted.current = true;
+      return;
+    }
+    playSound("tick", { onlyIfRunning: true });
+    haptic(6);
+  }, [active]);
 
   const goTo = useCallback((index: number) => {
     const track = trackRef.current;

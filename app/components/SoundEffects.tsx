@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { playSound, unlockAudio, type SoundName } from "./sound";
+import { haptic, playSound, unlockAudio, type SoundName } from "./sound";
 
 const INTERACTIVE =
   'a[href], button, summary, select, [role="button"], input[type="submit"], input[type="checkbox"], input[type="radio"]';
@@ -54,8 +54,16 @@ export function SoundEffects() {
       lastPointerDown = event.timeStamp;
       const sound = soundFor(el);
       if (sound) playSound(sound);
+      if (event.pointerType === "touch") haptic(sound === "press" ? 14 : 8);
       if (el.classList.contains("button")) ripple(el as HTMLElement, event);
     };
+
+    // iOS Safari only unlocks audio on a finished tap (touchend / click),
+    // never on touch-down, so unlock on every kind of completed gesture.
+    const onUnlockGesture = () => {
+      void unlockAudio();
+    };
+    const unlockEvents = ["touchend", "pointerup", "click", "keydown"] as const;
 
     // Keyboard activation (Enter / Space) arrives as a click with detail 0.
     const onClick = (event: MouseEvent) => {
@@ -86,7 +94,13 @@ export function SoundEffects() {
     document.addEventListener("click", onClick, { capture: true, passive: true });
     document.addEventListener("pointerover", onPointerOver, { passive: true });
     document.addEventListener("animationend", onAnimationEnd, { passive: true });
+    unlockEvents.forEach((name) =>
+      document.addEventListener(name, onUnlockGesture, { capture: true, passive: true })
+    );
     return () => {
+      unlockEvents.forEach((name) =>
+        document.removeEventListener(name, onUnlockGesture, { capture: true })
+      );
       document.removeEventListener("pointerdown", onPointerDown, { capture: true });
       document.removeEventListener("click", onClick, { capture: true });
       document.removeEventListener("pointerover", onPointerOver);

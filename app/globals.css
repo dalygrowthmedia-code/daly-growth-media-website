@@ -191,7 +191,10 @@ img {
   position: fixed;
   inset: 0;
   z-index: 999;
+  --mark-w: min(13rem, 46vw);
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
   place-items: center;
   overflow: hidden;
   pointer-events: none;
@@ -201,11 +204,19 @@ img {
 
 .logo-boom > * {
   grid-area: 1 / 1;
+  justify-self: center;
+  align-self: center;
   will-change: transform, opacity;
 }
 
+.logo-boom-glow,
+.logo-boom-bubble,
+.logo-boom-ring {
+  translate: calc(var(--mark-w) * -0.091) calc(var(--mark-w) * -0.145);
+}
+
 .logo-boom-glow {
-  width: min(34rem, 120vw);
+  width: min(34rem, 100vw);
   aspect-ratio: 1;
   border-radius: 50%;
   background: radial-gradient(
@@ -258,7 +269,7 @@ img {
 }
 
 .logo-boom-mark {
-  width: min(13rem, 46vw);
+  width: var(--mark-w);
   aspect-ratio: 1109 / 1437;
   background-image: url("/assets/logo.webp");
   background-position: center;

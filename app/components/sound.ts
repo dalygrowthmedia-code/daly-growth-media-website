@@ -64,6 +64,13 @@ function getContext(): AudioContext | null {
   const Ctor = window.AudioContext || (window as WebkitWindow).webkitAudioContext;
   if (!Ctor) return null;
   try {
+    // iOS Safari 16.4+: play as media so the ring/silent switch doesn't mute UI sounds.
+    const session = (navigator as Navigator & { audioSession?: { type: string } }).audioSession;
+    if (session) session.type = "playback";
+  } catch {
+    // unsupported — fine
+  }
+  try {
     ctx = new Ctor({ latencyHint: "interactive" });
   } catch {
     return null;
@@ -80,11 +87,41 @@ function getContext(): AudioContext | null {
   return ctx;
 }
 
-/** Call from inside a user gesture so the browser lets audio start. */
-export function unlockAudio() {
+/**
+ * Call from inside a user gesture so the browser lets audio start. iOS only
+ * counts a finished tap (touchend / click), so this is called on those too.
+ * Resolves true once audio is actually running.
+ */
+export function unlockAudio(): Promise<boolean> {
   const context = getContext();
-  if (context && context.state === "suspended") {
-    context.resume().catch(() => {});
+  if (!context) return Promise.resolve(false);
+
+  // A one-sample silent buffer inside the gesture is what finally unlocks iOS.
+  try {
+    const silent = context.createBuffer(1, 1, 22050);
+    const source = context.createBufferSource();
+    source.buffer = silent;
+    source.connect(context.destination);
+    source.start(0);
+  } catch {
+    // ignore
+  }
+
+  if (context.state === "running") return Promise.resolve(true);
+  return context
+    .resume()
+    .then(() => context.state === "running")
+    .catch(() => false);
+}
+
+/** Short tap buzz on phones that support it (Android); silently ignored elsewhere. */
+export function haptic(ms: number) {
+  try {
+    if (typeof navigator !== "undefined" && typeof navigator.vibrate === "function") {
+      navigator.vibrate(ms);
+    }
+  } catch {
+    // ignore
   }
 }
 
@@ -257,10 +294,13 @@ export function playSound(
   }
   if (onlyIfRunning) return false;
 
+  // Audio is still locked (first tap on iOS): queue it and play when the
+  // finished tap unlocks audio — but never play a stale sound late.
+  const requestedAt = performance.now();
   context
     .resume()
     .then(() => {
-      if (context.state === "running") run();
+      if (context.state === "running" && performance.now() - requestedAt < 800) run();
     })
     .catch(() => {});
   return false;

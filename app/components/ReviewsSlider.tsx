@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { haptic, playSound } from "./sound";
 import type { GoogleReview } from "../config/google-business";
 import { ReviewStars } from "./ReviewStars";
 
@@ -15,6 +16,17 @@ export function ReviewsSlider({
 }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
+  const hasMounted = useRef(false);
+
+  // A soft tick (and buzz on phones) each time a swipe lands on a new slide.
+  useEffect(() => {
+    if (!hasMounted.current) {
+      hasMounted.current = true;
+      return;
+    }
+    playSound("tick", { onlyIfRunning: true });
+    haptic(6);
+  }, [active]);
   const [atEnd, setAtEnd] = useState(false);
 
   const goTo = useCallback((index: number) => {

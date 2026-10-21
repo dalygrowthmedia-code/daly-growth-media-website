@@ -22,16 +22,18 @@ export function LogoBoomIntro() {
     setIsPlaying(true);
 
     let popped = false;
-    const gestureEvents = ["pointerdown", "keydown", "touchstart"] as const;
+    const gestureEvents = ["touchend", "pointerup", "click", "keydown"] as const;
 
     // Browsers may block audio before any interaction. If so, the pop plays
     // on the visitor's first tap/keypress while the intro is still on screen.
     const onGesture = () => {
-      unlockAudio();
-      if (!popped) {
-        popped = playSound("pop");
-      }
-      if (popped) removeGestureListeners();
+      void unlockAudio().then((running) => {
+        if (running && !popped) {
+          popped = true;
+          playSound("pop");
+          removeGestureListeners();
+        }
+      });
     };
 
     function removeGestureListeners() {
