@@ -34,8 +34,7 @@ export const googleBusiness = {
     {
       author: "Josh O Mahony",
       rating: 5,
-      text: "Sean and his team have been a delight to work with. They have always been really clear on what's happening and the…",
-      truncated: true,
+      text: "Sean and his team have been a delight to work with. They have always been really clear on what's happening and the results we have got. Since starting to work with Sean and the team. We have received qualified leads daily because of this we have never been stuck for work and we can actually expand. I couldn't recommend Sean and his team enough.",
       reply: "Thanks Josh you were a pleasure to work with"
     },
     {
